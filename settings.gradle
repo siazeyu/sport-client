@@ -1,0 +1,2 @@
+rootProject.name = "运动助手"
+include ':app'
