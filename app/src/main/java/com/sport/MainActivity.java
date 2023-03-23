@@ -19,18 +19,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         API api = retrofit.create(API.class);
-        Call<ResultData> result = api.getJsonData(new LoginUser("20199245", "1223456"));
+        Call<ResultData> result = api.getJsonData(new LoginUser("1", "123456"));
         result.enqueue(new Callback<ResultData>() {
             @Override
             public void onResponse(Call<ResultData> call, Response<ResultData> response) {
                if (response.isSuccessful()){
                    Log.d("retrofit", response.body().toString());
+               }else{
+                   try {
+                       Log.d("retrofit", response.errorBody().string());
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   }
                }
-                try {
-                    Log.d("retrofit", response.errorBody().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
             }
 
             @Override
