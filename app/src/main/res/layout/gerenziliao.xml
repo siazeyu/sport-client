@@ -1,47 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
     <TextView
             android:text="体重"
-            android:layout_width="107dp"
-            android:layout_height="54dp" android:id="@+id/textView13" tools:layout_editor_absoluteY="196dp"
-            tools:layout_editor_absoluteX="16dp" android:textSize="34sp"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/textView13"
+            android:textSize="34sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" app:layout_constraintEnd_toStartOf="@+id/textView12"
+            android:layout_marginBottom="481dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="21dp"
+    />
     <TextView
             android:text="TextView"
-            android:layout_width="224dp"
-            android:layout_height="52dp" android:id="@+id/textView12" tools:layout_editor_absoluteY="198dp"
-            tools:layout_editor_absoluteX="144dp" android:textSize="34sp"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/textView12"
+            android:textSize="34sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="295dp"
+            app:layout_constraintBottom_toTopOf="@+id/button13" android:layout_marginEnd="43dp"
+    />
     <TextView
             android:text="TextView"
-            android:layout_width="224dp"
-            android:layout_height="52dp" android:id="@+id/textView10" tools:layout_editor_absoluteY="118dp"
-            tools:layout_editor_absoluteX="144dp" android:textSize="34sp"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/textView10"
+            android:textSize="34sp"
+            app:layout_constraintTop_toBottomOf="@+id/button2" app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView12" android:layout_marginEnd="43dp"
+    />
     <TextView
             android:text="身高"
-            android:layout_width="107dp"
-            android:layout_height="54dp" android:id="@+id/textView11" tools:layout_editor_absoluteY="116dp"
-            tools:layout_editor_absoluteX="16dp" android:textSize="34sp"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/textView11"
+            android:textSize="34sp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintEnd_toStartOf="@+id/textView10"
+            android:layout_marginBottom="26dp" app:layout_constraintBottom_toTopOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:layout_marginEnd="21dp"/>
     <Button
             android:text="统计"
-            android:layout_width="284dp"
-            android:layout_height="75dp" android:id="@+id/button2" tools:layout_editor_absoluteY="-4dp"
-            tools:layout_editor_absoluteX="123dp" app:strokeColor="#E91E63" android:rotationX="2"
-            android:textSize="24sp"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/button2"
+            app:strokeColor="#E91E63" android:rotationX="2"
+            android:textSize="24sp" app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="46dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView10" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="4dp"/>
     <Button
             android:text="编辑"
-            android:layout_width="109dp"
-            android:layout_height="64dp" android:id="@+id/button13" tools:layout_editor_absoluteY="545dp"
-            tools:layout_editor_absoluteX="61dp" app:strokeColor="#E91E63" android:textSize="34sp"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/button13"
+            app:strokeColor="#E91E63" android:textSize="34sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" app:layout_constraintEnd_toStartOf="@+id/button14"
+            android:layout_marginBottom="122dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="61dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="57dp"
+    />
     <Button
             android:text="保存"
-            android:layout_width="108dp"
-            android:layout_height="65dp" android:id="@+id/button14" tools:layout_editor_absoluteY="544dp"
-            tools:layout_editor_absoluteX="227dp" app:strokeColor="#E91E63" android:textSize="34sp"/>
+            android:layout_width="0dp"
+            android:layout_height="65dp" android:id="@+id/button14"
+            app:strokeColor="#E91E63" android:textSize="34sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button13"
+            app:layout_constraintStart_toEndOf="@+id/button13" android:layout_marginEnd="76dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
-            android:layout_width="51dp"
-            android:layout_height="53dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView"
-            tools:layout_editor_absoluteX="16dp" tools:layout_editor_absoluteY="16dp" android:background="#2196F3"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView"
+            android:background="#2196F3"
+            android:layout_marginTop="16dp" app:layout_constraintEnd_toStartOf="@+id/button2"
+            android:layout_marginBottom="47dp" app:layout_constraintBottom_toTopOf="@+id/textView11"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:layout_marginEnd="56dp"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
