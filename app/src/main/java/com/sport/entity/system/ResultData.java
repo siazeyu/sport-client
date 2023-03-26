@@ -29,6 +29,10 @@ public class ResultData {
         return data;
     }
 
+    public<T> T getData(Class<T> clazz) {
+        return JSON.parseObject(JSON.toJSONString(data), clazz);
+    }
+
     public void setData(Object data) {
         this.data = data;
     }
