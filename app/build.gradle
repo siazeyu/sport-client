@@ -27,6 +27,29 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
+////签名文件配置
+//    Properties properties = new Properties()//加载资源
+//    InputStream inputStream = project.rootProject.file('key.properties').newDataInputStream()
+//    properties.load(inputStream)
+//    //读取文件
+//    def sdkDir = properties.getProperty('keystore.path')
+//    //读取字段
+//    def keyfile = file(sdkDir)
+//    def key_keyAlias = properties.getProperty('keystore.alias')
+//    def key_keyPassword = properties.getProperty('keystore.password')
+//    def key_storePassword = properties.getProperty('keystore.password')
+//    signingConfigs {
+//        release {
+//            keyAlias key_keyAlias
+//            keyPassword key_keyPassword
+//            storeFile keyfile
+//            storePassword key_storePassword
+//        }
+//    }
+
+
 }
 
 dependencies {
@@ -42,4 +65,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.25'
     implementation 'com.squareup.sqlbrite3:sqlbrite:3.2.0'
+
+    compile 'com.amap.api:location:latest.integration'
+    compile 'com.amap.api:map2d:latest.integration'
 }

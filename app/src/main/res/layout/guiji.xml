@@ -5,57 +5,49 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
+    <com.amap.api.maps2d.MapView
+
+            android:id="@+id/gaode_map"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent">
+        <Button
+                android:text="暂停"
+                android:layout_width="55dp"
+                android:layout_height="75dp" android:id="@+id/button24"
+                app:strokeColor="#E91E63" android:textSize="20sp"
+        />
+        <Button
+                android:text="开始"
+                android:layout_width="55dp"
+                android:layout_height="75dp" android:id="@+id/button21"
+                app:strokeColor="#E91E63" android:textSize="20sp"
+        />
+        <Button
+                android:text="我的轨迹"
+                android:layout_width="168dp"
+                android:layout_height="75dp" android:id="@+id/button12"
+                app:strokeColor="#E91E63" android:rotationX="2"
+                android:textSize="24sp"
+        />
+    </com.amap.api.maps2d.MapView>
+
     <Button
             android:text="轨迹追踪"
-            android:layout_width="0dp"
-            android:layout_height="0dp" android:id="@+id/button19"
+            android:layout_width="133dp"
+            android:layout_height="75dp" android:id="@+id/button19"
             app:strokeColor="#9C27B0" android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@+id/button12" app:layout_constraintEnd_toStartOf="@+id/button26"
-            android:layout_marginBottom="1dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="48dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="44dp"
-    />
+            tools:layout_editor_absoluteY="656dp" tools:layout_editor_absoluteX="48dp"/>
     <Button
             android:text="历史轨迹"
-            android:layout_width="0dp"
-            android:layout_height="0dp" android:id="@+id/button26"
+            android:layout_width="133dp"
+            android:layout_height="75dp" android:id="@+id/button26"
             app:strokeColor="#E91E63" android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@+id/button24" app:layout_constraintStart_toEndOf="@+id/button19"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="53dp"
-    />
-    <Button
-            android:text="开始"
-            android:layout_width="0dp"
-            android:layout_height="0dp" android:id="@+id/button21"
-            app:strokeColor="#E91E63" android:textSize="20sp"
-            android:layout_marginTop="111dp" android:layout_marginBottom="27dp"
-            app:layout_constraintEnd_toEndOf="@+id/button24" app:layout_constraintBottom_toTopOf="@+id/button24"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="@+id/button24"/>
-    <Button
-            android:text="暂停"
-            android:layout_width="55dp"
-            android:layout_height="0dp" android:id="@+id/button24"
-            app:strokeColor="#E91E63" android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@+id/button21" android:layout_marginBottom="366dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/button26"
-            android:layout_marginEnd="16dp"/>
+            tools:layout_editor_absoluteY="655dp" tools:layout_editor_absoluteX="226dp"/>
     <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView4"
+            android:layout_width="168dp"
+            android:layout_height="53dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView4"
             android:background="#2196F3"
-            android:layout_marginTop="16dp" app:layout_constraintEnd_toStartOf="@+id/button12"
-            android:layout_marginBottom="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp" app:layout_constraintBottom_toBottomOf="@+id/button12"
-            android:layout_marginEnd="44dp"/>
-    <Button
-            android:text="我的轨迹"
-            android:layout_width="0dp"
-            android:layout_height="0dp" android:id="@+id/button12"
-            app:strokeColor="#E91E63" android:rotationX="2"
-            android:textSize="24sp" android:layout_marginTop="2dp" app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="579dp"
-            app:layout_constraintBottom_toTopOf="@+id/button19" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="16dp"/>
+            tools:layout_editor_absoluteY="16dp" tools:layout_editor_absoluteX="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
