@@ -45,6 +45,7 @@ public class LoginHandler {
                             SPUtil.putString(context,"username", data.getName());
                             SPUtil.putFloat(context, "user_sex", data.getSex());
                             SPUtil.putFloat(context, "user_height", data.getHeight());
+                            SPUtil.putFloat(context, "user_weight", data.getWeight());
                             SPUtil.putString(context, "user_token", data.getToken());
                             SPUtil.putLong(context, "login_time", System.currentTimeMillis());
                             Toast.makeText(context, "登录成功！", Toast.LENGTH_LONG).show();

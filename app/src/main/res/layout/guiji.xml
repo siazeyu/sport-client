@@ -9,45 +9,29 @@
 
             android:id="@+id/gaode_map"
 
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
 
-            android:layout_height="match_parent">
-        <Button
-                android:text="暂停"
-                android:layout_width="55dp"
-                android:layout_height="75dp" android:id="@+id/button24"
-                app:strokeColor="#E91E63" android:textSize="20sp"
-        />
-        <Button
-                android:text="开始"
-                android:layout_width="55dp"
-                android:layout_height="75dp" android:id="@+id/button21"
-                app:strokeColor="#E91E63" android:textSize="20sp"
-        />
-        <Button
-                android:text="我的轨迹"
-                android:layout_width="168dp"
-                android:layout_height="75dp" android:id="@+id/button12"
-                app:strokeColor="#E91E63" android:rotationX="2"
-                android:textSize="24sp"
-        />
+            android:layout_height="0dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
     </com.amap.api.maps2d.MapView>
 
     <Button
-            android:text="轨迹追踪"
+            android:text="开始"
             android:layout_width="133dp"
-            android:layout_height="75dp" android:id="@+id/button19"
-            app:strokeColor="#9C27B0" android:textSize="24sp"
-            tools:layout_editor_absoluteY="656dp" tools:layout_editor_absoluteX="48dp"/>
+            android:layout_height="0dp" android:id="@+id/button21"
+            app:strokeColor="#E91E63" android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/button12" android:layout_marginBottom="70dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     <Button
             android:text="历史轨迹"
-            android:layout_width="133dp"
-            android:layout_height="75dp" android:id="@+id/button26"
-            app:strokeColor="#E91E63" android:textSize="24sp"
-            tools:layout_editor_absoluteY="655dp" tools:layout_editor_absoluteX="226dp"/>
-    <ImageView
             android:layout_width="168dp"
-            android:layout_height="53dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView4"
-            android:background="#2196F3"
-            tools:layout_editor_absoluteY="16dp" tools:layout_editor_absoluteX="16dp"/>
+            android:layout_height="0dp" android:id="@+id/button12"
+            app:strokeColor="#E91E63" android:rotationX="2"
+            android:textSize="24sp"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="495dp" app:layout_constraintBottom_toTopOf="@+id/button21"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

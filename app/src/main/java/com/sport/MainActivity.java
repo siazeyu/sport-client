@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.sport.activity.IndexActivity;
+import com.sport.activity.PersonalActivity;
+import com.sport.activity.RegisterActivity;
 import com.sport.entity.LoginUser;
 import com.sport.entity.system.ResultData;
 import com.sport.handler.LoginHandler;
@@ -43,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.login_password);
         login_btn = findViewById(R.id.login_btn);
         register_btn = findViewById(R.id.reg_btn);
+        register_btn.setOnClickListener((v) -> {
+            startActivity(new Intent(this, RegisterActivity.class));
+        });
+
+
     }
 
     private void check(){

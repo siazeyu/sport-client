@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class IndexActivity extends AppCompatActivity{
     private Sensor stepDetector;
     private TextView tv;
     private Button sport;
+    private ImageView person_btn;
 
 
     @Override
@@ -44,6 +46,10 @@ public class IndexActivity extends AppCompatActivity{
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         tv = findViewById(R.id.user_step);
+        person_btn = findViewById(R.id.btn_person);
+        person_btn.setOnClickListener((v) ->{
+            startActivity(new Intent(this, PersonalActivity.class));
+        });
         sport = findViewById(R.id.button5);
         sport.setOnClickListener((a) ->{
             Intent intent = new Intent(this, SportActivity.class);
