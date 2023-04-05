@@ -2,14 +2,25 @@ package com.sport.util.database.entity;
 
 public class Point {
 
+    private Integer id;
+
+    private Double longitude;
+
+    private Double latitude;
+
+    private String address;
+
+    private Long timestamp;
+
     public Point(){
 
     };
 
-    public Point(Integer id, Float xPoint, Float yPoint, Long timestamp) {
+    public Point(Integer id, Double longitude, Double latitude, String address, Long timestamp) {
         this.id = id;
-        this.xpoint = xPoint;
-        this.ypoint = yPoint;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
         this.timestamp = timestamp;
     }
 
@@ -21,20 +32,28 @@ public class Point {
         this.id = id;
     }
 
-    public Float getXpoint() {
-        return xpoint;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setXpoint(Float xpoint) {
-        this.xpoint = xpoint;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
-    public Float getYpoint() {
-        return ypoint;
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setYpoint(Float ypoint) {
-        this.ypoint = ypoint;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getTimestamp() {
@@ -44,12 +63,4 @@ public class Point {
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
-
-    private Integer id;
-
-    private Float xpoint;
-
-    private Float ypoint;
-
-    private Long timestamp;
 }

@@ -53,7 +53,7 @@ public class DBTable {
             if(field.getType() == float.class || field.getType() == double.class || field.getType() == Float.class || field.getType() == Double.class){
                 stringStringLinkedHashMap.put(field.getName().toLowerCase(), "double");
             }else{
-                stringStringLinkedHashMap.put(field.getName().toLowerCase(),"varchar(20)");
+                stringStringLinkedHashMap.put(field.getName().toLowerCase(),"varchar(200)");
             }
         }
         return new DBTable(stringStringLinkedHashMap);

@@ -19,11 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.sport.R;
+import com.sport.handler.StepService;
 import com.sport.util.database.SPUtil;
 
 public class IndexActivity extends AppCompatActivity{
 
-    private String[] permissions={Manifest.permission.ACTIVITY_RECOGNITION, Manifest.permission. ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    private String[] permissions={Manifest.permission.ACTIVITY_RECOGNITION, Manifest.permission. ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION};
 //    private AlertDialog dialog;
 
     private SensorManager mSensorManager;
@@ -31,8 +32,6 @@ public class IndexActivity extends AppCompatActivity{
 //    public float mCounter;
     private static final int sensorTypeD = Sensor.TYPE_STEP_DETECTOR;
     private static final int sensorTypeC = Sensor.TYPE_STEP_COUNTER;
-    private Sensor stepCounter;
-    private Sensor stepDetector;
     private TextView tv;
     private Button sport;
     private ImageView person_btn;
@@ -44,6 +43,7 @@ public class IndexActivity extends AppCompatActivity{
         setContentView(R.layout.sport);
         shouquan();
 
+        startService(new Intent(this, StepService.class));
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         tv = findViewById(R.id.user_step);
         person_btn = findViewById(R.id.btn_person);
@@ -94,7 +94,6 @@ public class IndexActivity extends AppCompatActivity{
 
     private void shouquan(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            // 检查该权限是否已经获取
 
             for (String permission : permissions) {
                 int get = ContextCompat.checkSelfPermission(this, permission);

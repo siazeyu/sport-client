@@ -28,7 +28,9 @@
         <meta-data android:name="com.amap.api.v2.apikey" android:value="4f347b88a468caa7c29e0813052cfcf8">
         </meta-data>
         <service android:name="com.amap.api.location.APSService"></service>
+
         <service android:name="com.sport.handler.SportService" android:process=":remote"/>
+        <service android:name="com.sport.handler.StepService" android:process=":remote"/>
     </application>
 
 

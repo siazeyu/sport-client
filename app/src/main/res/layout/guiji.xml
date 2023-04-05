@@ -19,7 +19,7 @@
     <Button
             android:text="开始"
             android:layout_width="133dp"
-            android:layout_height="0dp" android:id="@+id/button21"
+            android:layout_height="0dp" android:id="@+id/start_btn"
             app:strokeColor="#E91E63" android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/button12" android:layout_marginBottom="70dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
             app:strokeColor="#E91E63" android:rotationX="2"
             android:textSize="24sp"
             android:layout_marginTop="26dp"
-            android:layout_marginBottom="495dp" app:layout_constraintBottom_toTopOf="@+id/button21"
+            android:layout_marginBottom="495dp" app:layout_constraintBottom_toTopOf="@+id/start_btn"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

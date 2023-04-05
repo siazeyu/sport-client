@@ -36,16 +36,14 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         this.table = table;
         this.tableName = name;
         this.context = context;
-        database = getWritableDatabase();
-
-        String sql = "create table if not exists "+ tableName +"("+table.asSql()+")";
-        database.execSQL(sql);
 
     }
 
     //id integer primary key autoincrement,step integer,time varchar(20)
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String sql = "create table if not exists "+ tableName +"("+table.asSql()+")";
+        db.execSQL(sql);
 
     }
 
@@ -219,7 +217,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                     field.set(t, cursor.getInt(cursor.getColumnIndex(name)));
                 }else
                 if(field.getType() == float.class || field.getType() == double.class || field.getType() == Float.class || field.getType() == Double.class){
-                    field.set(t, cursor.getFloat(cursor.getColumnIndex(name)));
+                    field.set(t, cursor.getDouble(cursor.getColumnIndex(name)));
                 }else
                 if(field.getType() == boolean.class || field.getType() == Boolean.class){
                     field.set(t, Boolean.valueOf(cursor.getString(cursor.getColumnIndex(name))));

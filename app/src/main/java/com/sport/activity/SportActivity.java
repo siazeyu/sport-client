@@ -1,7 +1,9 @@
 package com.sport.activity;
 
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.amap.api.location.AMapLocationClient;
@@ -15,7 +17,9 @@ import com.sport.util.database.DBOpenHelper;
 import com.sport.util.database.DBTable;
 import com.sport.util.database.entity.Point;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class SportActivity extends AppCompatActivity {
@@ -25,6 +29,9 @@ public class SportActivity extends AppCompatActivity {
 
     public AMapLocationClient mLocationClient = null;//声明AMapLocationClient类对象
     public AMapLocationClientOption mLocationOption = null;
+    private DBTable dbTable = DBTable.asDBTable(Point.class);
+    private DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
+    private Button start;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,14 +39,18 @@ public class SportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guiji);
 
+        initView();
+
         AMapLocationClient.updatePrivacyAgree(this, true);
         AMapLocationClient.updatePrivacyShow(this, true, true);
+
+        startService(new Intent(this, com.sport.handler.SportService.class));
 
         mMapView = findViewById(R.id.gaode_map);
         mMapView.onCreate(savedInstanceState);
 
 
-        if (aMap == null){
+        if (aMap == null) {
             aMap = mMapView.getMap();
         }
 
@@ -51,21 +62,33 @@ public class SportActivity extends AppCompatActivity {
         aMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示，非必需设置。
         aMap.moveCamera(CameraUpdateFactory.zoomTo(100));
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+        guiji();
 
-        dingwei();
-        test();
     }
+
+    private void initView() {
+        start = findViewById(R.id.start_btn);
+
+    }
+
+    // 加载轨迹
+    private void guiji() {
+        LinkedList<Point> all = sport.getAll(Point.class);
+        List<LatLng> latLngs = new ArrayList<>();
+        for (Point point : all) {
+            latLngs.add(new LatLng(point.getLongitude(), point.getLatitude()));
+        }
+        aMap.addPolyline(new PolylineOptions().
+                addAll(latLngs).width(10).color(Color.BLUE)).setDottedLine(false);
+
+    }
+
 
     private void test() {
         DBTable dbTable = DBTable.asDBTable(Point.class);
         DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
-        sport.remove(3);
         LinkedList<Point> all = sport.getAll(Point.class);
         Point point = sport.get(1, Point.class);
-
-    }
-
-    private void dingwei() {
 
     }
 
@@ -75,18 +98,21 @@ public class SportActivity extends AppCompatActivity {
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
         mMapView.onDestroy();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
         mMapView.onResume();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
         mMapView.onPause();
     }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
