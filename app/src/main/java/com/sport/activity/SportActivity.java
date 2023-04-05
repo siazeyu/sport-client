@@ -1,20 +1,21 @@
 package com.sport.activity;
 
-import android.location.Location;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.alibaba.fastjson2.JSON;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.MapsInitializer;
 import com.amap.api.maps2d.model.*;
 import com.sport.R;
+import com.sport.util.database.DBOpenHelper;
+import com.sport.util.database.DBTable;
+import com.sport.util.database.entity.Point;
 
+import java.util.LinkedList;
 
 
 public class SportActivity extends AppCompatActivity {
@@ -52,6 +53,16 @@ public class SportActivity extends AppCompatActivity {
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
 
         dingwei();
+        test();
+    }
+
+    private void test() {
+        DBTable dbTable = DBTable.asDBTable(Point.class);
+        DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
+        sport.remove(3);
+        LinkedList<Point> all = sport.getAll(Point.class);
+        Point point = sport.get(1, Point.class);
+
     }
 
     private void dingwei() {

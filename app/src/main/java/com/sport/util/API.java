@@ -7,7 +7,8 @@ import retrofit2.http.*;
 
 public interface API {
 
-    public final static String BASE_URL = "http://192.168.96.135:8083/";
+    String BASE_URL = "http://192.168.36.135:8083/";
+
     @POST("/user/login")
-    public Call<ResultData> getJsonData(@Body LoginUser loginUser);
+    Call<ResultData> getJsonData(@Body LoginUser loginUser);
 }
