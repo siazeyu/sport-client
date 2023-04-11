@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="70dp"
+            android:layout_height="60dp" android:id="@+id/textView19" tools:layout_editor_absoluteY="162dp"
+            tools:layout_editor_absoluteX="119dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="70dp"
+            android:layout_height="60dp" android:id="@+id/textView20" tools:layout_editor_absoluteY="162dp"
+            tools:layout_editor_absoluteX="211dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="70dp"
+            android:layout_height="60dp" android:id="@+id/textView21" tools:layout_editor_absoluteY="162dp"
+            tools:layout_editor_absoluteX="297dp"/>
+    <Button
+            android:text="公里"
+            android:layout_width="70dp"
+            android:layout_height="50dp" android:id="@+id/button17" tools:layout_editor_absoluteY="98dp"
+            tools:layout_editor_absoluteX="211dp"/>
+    <Button
+            android:text="卡路里"
+            android:layout_width="70dp"
+            android:layout_height="50dp" android:id="@+id/button18" tools:layout_editor_absoluteY="98dp"
+            tools:layout_editor_absoluteX="297dp"/>
+    <Button
+            android:text="步数"
+            android:layout_width="70dp"
+            android:layout_height="50dp" android:id="@+id/button16" tools:layout_editor_absoluteY="98dp"
+            tools:layout_editor_absoluteX="119dp"/>
+    <Button
+            android:text="历史记录"
+            android:layout_width="284dp"
+            android:layout_height="75dp" android:id="@+id/button15" tools:layout_editor_absoluteY="3dp"
+            tools:layout_editor_absoluteX="111dp" app:strokeColor="#E91E63" android:rotationX="2"
+            android:textSize="24sp" android:background="@color/purple_200"/>
+    <ImageView
+            android:layout_width="51dp"
+            android:layout_height="53dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView2"
+            tools:layout_editor_absoluteX="16dp" tools:layout_editor_absoluteY="16dp" android:background="#2196F3"/>
+    <Button
+            android:text="日期"
+            android:layout_width="70dp"
+            android:layout_height="50dp" android:id="@+id/button3" tools:layout_editor_absoluteY="98dp"
+            tools:layout_editor_absoluteX="18dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="70dp"
+            android:layout_height="60dp" android:id="@+id/textView18" tools:layout_editor_absoluteY="162dp"
+            tools:layout_editor_absoluteX="23dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
