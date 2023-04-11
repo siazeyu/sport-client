@@ -40,7 +40,7 @@
     <Button
             android:text="注册"
             android:layout_width="190dp"
-            android:layout_height="49dp" android:id="@+id/button9" tools:layout_editor_absoluteY="507dp"
+            android:layout_height="49dp" android:id="@+id/button9" tools:layout_editor_absoluteY="505dp"
             tools:layout_editor_absoluteX="110dp" app:strokeColor="#2196F3"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

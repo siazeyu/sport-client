@@ -51,7 +51,7 @@
     <Button
             android:text="返回登录"
             android:layout_width="199dp"
-            android:layout_height="49dp" android:id="@+id/button7" tools:layout_editor_absoluteY="535dp"
+            android:layout_height="49dp" android:id="@+id/button7" tools:layout_editor_absoluteY="530dp"
             tools:layout_editor_absoluteX="93dp" app:strokeColor="#2196F3"/>
     <Button
             android:text="注册"

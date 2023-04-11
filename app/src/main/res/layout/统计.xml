@@ -19,7 +19,7 @@
         <ImageView
                 android:layout_width="51dp"
                 android:layout_height="53dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView3"
-                tools:layout_editor_absoluteX="16dp" tools:layout_editor_absoluteY="3dp" android:background="#2196F3"/>
+                tools:layout_editor_absoluteX="16dp" tools:layout_editor_absoluteY="6dp" android:background="#2196F3"/>
         <Button
                 android:text="历史记录"
                 android:layout_width="404dp"

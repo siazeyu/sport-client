@@ -37,8 +37,8 @@
     <Button
             android:text="编辑"
             android:layout_width="120dp"
-            android:layout_height="75dp" android:id="@+id/button13" tools:layout_editor_absoluteY="545dp"
-            tools:layout_editor_absoluteX="61dp" app:strokeColor="#E91E63" android:textSize="24sp"/>
+            android:layout_height="75dp" android:id="@+id/button13" tools:layout_editor_absoluteY="544dp"
+            tools:layout_editor_absoluteX="57dp" app:strokeColor="#E91E63" android:textSize="24sp"/>
     <Button
             android:text="保存"
             android:layout_width="120dp"
