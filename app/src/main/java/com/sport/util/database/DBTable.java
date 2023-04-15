@@ -52,7 +52,10 @@ public class DBTable {
             }
             if(field.getType() == float.class || field.getType() == double.class || field.getType() == Float.class || field.getType() == Double.class){
                 stringStringLinkedHashMap.put(field.getName().toLowerCase(), "double");
-            }else{
+            }else if(field.getType() == Long.class || field.getType() == long.class){
+                stringStringLinkedHashMap.put(field.getName().toLowerCase(), "integer");
+            }
+            else {
                 stringStringLinkedHashMap.put(field.getName().toLowerCase(),"varchar(200)");
             }
         }

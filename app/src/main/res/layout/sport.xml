@@ -31,7 +31,7 @@
             android:textSize="34sp"
             app:layout_constraintTop_toBottomOf="@+id/textView6" app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="173dp"
-            app:layout_constraintBottom_toTopOf="@+id/button10" android:layout_marginEnd="43dp"
+            app:layout_constraintBottom_toTopOf="@+id/button1110" android:layout_marginEnd="43dp"
     />
     <TextView
             android:text="公里数"
@@ -82,7 +82,7 @@
     <Button
             android:text="开始"
             android:layout_width="121dp"
-            android:layout_height="0dp" android:id="@+id/button10"
+            android:layout_height="0dp" android:id="@+id/button1110"
             android:textSize="34sp" app:strokeColor="#9C27B0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="133dp"

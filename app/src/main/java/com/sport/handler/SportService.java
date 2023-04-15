@@ -18,9 +18,11 @@ public class SportService extends Service {
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = null;
     private DBTable dbTable = DBTable.asDBTable(Point.class);
+    private Handler handler = null;
+    private Long group;
     private DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
 
-    private boolean flag = true;
+    private static boolean flag = true;
 
     private Binder binder = new Binder();
 
@@ -33,22 +35,26 @@ public class SportService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+
         initLocation();
 
         if (flag){
+
             Toast.makeText(this, "服务已经启动", Toast.LENGTH_LONG).show();
-            Handler handler=new Handler(getMainLooper());
+
+            group = System.currentTimeMillis();
+            handler=new Handler(getMainLooper());
             Runnable runnable=new Runnable(){
                 @Override
                 public void run() {
+
                     startLocation();
-                    handler.postDelayed(this, 20_000);
+                    handler.postDelayed(this, 5_000);
                 }
             };
-            handler.postDelayed(runnable, 20_000);
+            handler.postDelayed(runnable, 5_000);
             flag = false;
         }
-
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -111,7 +117,7 @@ public class SportService extends Service {
                     sb.append("区域 码   : " + location.getAdCode() + "\n");
                     sb.append("地    址    : " + location.getAddress() + "\n");
                     sb.append("兴趣点    : " + location.getPoiName() + "\n");
-                    sport.add(new Point(null, location.getLongitude(), location.getLatitude(), location.getAddress(), System.currentTimeMillis()));
+                    sport.add(new Point(null, location.getLongitude(), location.getLatitude(), location.getAddress(),group, System.currentTimeMillis()));
                     //定位完成的时间
                 } else {
                     //定位失败
@@ -130,7 +136,6 @@ public class SportService extends Service {
 
                 //解析定位结果，
                 String result = sb.toString();
-                Log.d("TAG_定位",  result);
             } else {
                 Log.e("TAG_定位","定位失败，loc is null");
             }
@@ -243,6 +248,10 @@ public class SportService extends Service {
     }
 
     private void initLocation(){
+
+        AMapLocationClient.updatePrivacyAgree(this, true);
+        AMapLocationClient.updatePrivacyShow(this, true, true);
+
         //初始化client
         try {
             locationClient = new AMapLocationClient(this.getApplicationContext());
@@ -257,5 +266,11 @@ public class SportService extends Service {
 
     }
 
-
+    @Override
+    public void onDestroy() {
+        Toast.makeText(this, "服务已经停止", Toast.LENGTH_LONG).show();
+        stopLocation();
+        destroyLocation();
+        super.onDestroy();
+    }
 }

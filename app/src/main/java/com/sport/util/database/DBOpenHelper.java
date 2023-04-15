@@ -138,12 +138,15 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                         continue;
                     }
                     if(field.getType() == int.class ){
-                        contentValues.put(field.getName(),field.getInt(values));
+                        contentValues.put(field.getName(), field.getInt(values));
                     }else{
-                        contentValues.put(field.getName(),field.getLong(values));
+                        contentValues.put(field.getName(), field.getLong(values));
                     }
-                }else{
-                    contentValues.put(field.getName(),field.get(values).toString());
+                }else if(field.getType() == Long.class || field.getType() == long.class){
+                    contentValues.put(field.getName(), field.getLong(values));
+                }else
+                {
+                    contentValues.put(field.getName(), field.get(values).toString());
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
@@ -186,6 +189,27 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         LinkedList<T> datas = new LinkedList<>();
         database = getReadableDatabase();
         Cursor cursor = database.query(tableName, null, null,
+                null, null, null,null);
+        while (cursor.moveToNext()){
+            T t;
+            try {
+                t = a.newInstance();
+                Class tc = t.getClass();
+                t = explainClass(cursor,tc,t);
+                datas.add(t);
+            } catch (IllegalAccessException | InstantiationException e) {
+                e.printStackTrace();
+            }
+
+        }
+        cursor.close();
+        return datas;
+    }
+
+    public <T> LinkedList<T> getNowDay(Class<T> a){
+        LinkedList<T> datas = new LinkedList<>();
+        database = getReadableDatabase();
+        Cursor cursor = database.query(tableName, null, "strftime('%Y-%m-%d', datetime('now')) = strftime('%Y-%m-%d',datetime(sport.groupby/1000, 'unixepoch'))",
                 null, null, null,null);
         while (cursor.moveToNext()){
             T t;

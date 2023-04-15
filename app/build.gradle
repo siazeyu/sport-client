@@ -66,6 +66,6 @@ dependencies {
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.25'
     implementation 'com.squareup.sqlbrite3:sqlbrite:3.2.0'
 
-    compile 'com.amap.api:location:latest.integration'
-    compile 'com.amap.api:map2d:latest.integration'
+    implementation 'com.amap.api:location:latest.integration'
+    implementation 'com.amap.api:map2d:latest.integration'
 }

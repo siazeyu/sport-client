@@ -10,18 +10,29 @@ public class Point {
 
     private String address;
 
+    private Long groupby;
+
     private Long timestamp;
 
     public Point(){
 
     };
 
-    public Point(Integer id, Double longitude, Double latitude, String address, Long timestamp) {
+    public Point(Integer id, Double longitude, Double latitude, String address, Long groupby, Long timestamp) {
         this.id = id;
         this.longitude = longitude;
         this.latitude = latitude;
         this.address = address;
+        this.groupby = groupby;
         this.timestamp = timestamp;
+    }
+
+    public Long getGroupby() {
+        return groupby;
+    }
+
+    public void setGroupby(Long groupby) {
+        this.groupby = groupby;
     }
 
     public Integer getId() {

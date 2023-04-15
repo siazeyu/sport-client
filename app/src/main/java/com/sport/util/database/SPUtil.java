@@ -3,12 +3,16 @@ package com.sport.util.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.sport.util.DateUtils;
 
 /**
  * Created by Foreveross on 2017/4/15.
  */
 public class SPUtil {
-    private static final String FILENAME ="data" ;           //设置获取数据期望的文件名字
+
+    private static final String FILENAME ="data";           //设置获取数据期望的文件名字
+
+    private static final String STEP = "step";
 
     /**
      * 存入的字符串的数据，Context.MODE_PRIVATE一般是私有的也可是可读可写的模式
@@ -69,6 +73,30 @@ public class SPUtil {
     public static long getLong(Context context,String key,long defValue){
         SharedPreferences sharedPreferences = context.getSharedPreferences(FILENAME, Context.MODE_PRIVATE);
         return sharedPreferences.getLong(key, defValue);
+    }
+
+    public static void putInt(Context context,String key,int value){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(FILENAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putInt(key, value);
+        edit.commit();
+    }
+
+    public static int getInt(Context context,String key,int defValue){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(FILENAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(key, defValue);
+    }
+
+    public static void putStep(Context context, int value){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(STEP, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putInt(STEP + DateUtils.getDate(), value);
+        edit.commit();
+    }
+
+    public static int getStep(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(STEP, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(STEP + DateUtils.getDate(), 0);
     }
 
 }

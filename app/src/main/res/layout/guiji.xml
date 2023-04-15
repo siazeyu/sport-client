@@ -1,57 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
-    <TextView
-            android:text="TextView"
-            android:layout_width="100dp"
-            android:layout_height="35dp" android:id="@+id/textView30" tools:layout_editor_absoluteY="167dp"
-            tools:layout_editor_absoluteX="71dp" android:textSize="14sp" android:alpha="0.6"/>
-    <TextView
-            android:text="公里数"
-            android:layout_width="55dp"
-            android:layout_height="35dp" android:id="@+id/textView29" tools:layout_editor_absoluteY="167dp"
-            tools:layout_editor_absoluteX="16dp" android:textSize="14sp" android:alpha="0.6"/>
-    <TextView
-            android:text="TextView"
-            android:layout_width="100dp"
-            android:layout_height="40dp" android:id="@+id/textView33" tools:layout_editor_absoluteY="92dp"
-            tools:layout_editor_absoluteX="45dp" android:textSize="16sp" android:alpha="0.6"/>
-    <TextView
-            android:text="TextView"
-            android:layout_width="100dp"
-            android:layout_height="35dp" android:id="@+id/textView32" tools:layout_editor_absoluteY="202dp"
-            tools:layout_editor_absoluteX="71dp" android:textSize="14sp" android:alpha="0.6"/>
-    <TextView
-            android:text="卡路里"
-            android:layout_width="55dp"
-            android:layout_height="35dp" android:id="@+id/textView31" tools:layout_editor_absoluteY="202dp"
-            tools:layout_editor_absoluteX="16dp" android:textSize="14sp" android:alpha="0.6"/>
-    <TextView
-            android:text="TextView"
-            android:layout_width="100dp"
-            android:layout_height="35dp" android:id="@+id/textView27" tools:layout_editor_absoluteY="132dp"
-            tools:layout_editor_absoluteX="71dp" android:textSize="14sp" android:alpha="0.6"/>
-    <TextView
-            android:text="步数"
-            android:layout_width="55dp"
-            android:layout_height="35dp" android:id="@+id/textView28" tools:layout_editor_absoluteY="132dp"
-            tools:layout_editor_absoluteX="16dp" android:textSize="14sp" android:alpha="0.6"/>
+
+    <com.amap.api.maps2d.MapView
+
+            android:id="@+id/gaode_map"
+
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent">
+    </com.amap.api.maps2d.MapView>
+    <TableLayout android:layout_width="130dp"
+                 android:layout_height="0dp"
+                 android:id="@+id/constraintLayout2"
+                 android:padding="5dp"
+                 android:background="#FF9800" android:alpha="1"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 android:layout_marginStart="10dp" app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                 android:layout_marginBottom="432dp">
+
+        <TableRow>
+            <TextView
+                    android:text="运动数据"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" android:id="@+id/textView30"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteY="180dp" tools:layout_editor_absoluteX="56dp" android:layout_span="2"
+                    android:gravity="center"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                    android:text="公里数"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp" android:id="@+id/textView29"
+                    android:textSize="8sp" android:alpha="0.6"
+                    tools:layout_editor_absoluteY="196dp" tools:layout_editor_absoluteX="16dp"/>
+            <TextView
+                    android:text="0 km"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent" android:id="@+id/km_text"
+                    android:textSize="8sp" android:alpha="0.6"
+                    tools:layout_editor_absoluteY="92dp" tools:layout_editor_absoluteX="3dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                    android:text="卡路里"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp" android:id="@+id/textView31"
+                    android:textSize="8sp" android:alpha="0.6"
+                    tools:layout_editor_absoluteY="231dp" tools:layout_editor_absoluteX="16dp"/>
+            <TextView
+                    android:text="0 cal"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp" android:id="@+id/kll_text"
+                    android:textSize="8sp" android:alpha="0.6"
+                    tools:layout_editor_absoluteY="228dp" tools:layout_editor_absoluteX="49dp"/>
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                    android:text="步数"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp" android:id="@+id/textView28"
+                    android:textSize="8sp" android:alpha="0.6"
+                    tools:layout_editor_absoluteY="161dp" tools:layout_editor_absoluteX="16dp"/>
+            <TextView
+                    android:text="0 步"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp" android:id="@+id/step_text"
+                    android:textSize="8sp" android:alpha="0.6"
+                    tools:layout_editor_absoluteY="132dp" tools:layout_editor_absoluteX="56dp"/>
+        </TableRow>
+
+
+    </TableLayout>
+
     <Button
             android:text="开始"
-            android:layout_width="130dp"
-            android:layout_height="69dp" android:id="@+id/button2" tools:layout_editor_absoluteY="646dp"
-            tools:layout_editor_absoluteX="140dp" app:strokeColor="#E91E63" android:textSize="20sp"/>
+            android:layout_width="114dp"
+            android:layout_height="0dp" android:id="@+id/start_btn"
+            app:strokeColor="#E91E63" android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/button12" android:layout_marginBottom="39dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView
-            android:layout_width="51dp"
-            android:layout_height="53dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView4"
-            tools:layout_editor_absoluteX="16dp" tools:layout_editor_absoluteY="16dp" android:background="#2196F3"/>
+            android:layout_width="148dp"
+            android:layout_height="35dp" app:srcCompat="@drawable/abc_vector_test" android:id="@+id/imageView4"
+            android:background="#2196F3"
+            android:layout_marginTop="39dp"
+            app:layout_constraintEnd_toStartOf="@+id/button12" android:layout_marginBottom="61dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp" android:layout_marginEnd="49dp"/>
     <Button
             android:text="运动计步"
-            android:layout_width="284dp"
-            android:layout_height="75dp" android:id="@+id/button12" tools:layout_editor_absoluteY="2dp"
-            tools:layout_editor_absoluteX="111dp" app:strokeColor="#E91E63" android:rotationX="2"
-            android:textSize="24sp"/>
+            android:layout_width="204dp"
+            android:layout_height="56dp" android:id="@+id/button12"
+            app:strokeColor="#E91E63" android:rotationX="2"
+            android:textSize="24sp"
+            android:layout_marginTop="26dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView4" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="550dp" app:layout_constraintBottom_toTopOf="@+id/start_btn"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="20dp"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

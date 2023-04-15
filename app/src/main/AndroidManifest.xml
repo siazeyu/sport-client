@@ -30,7 +30,7 @@
         <service android:name="com.amap.api.location.APSService"></service>
 
         <service android:name="com.sport.handler.SportService" android:process=":remote"/>
-        <service android:name="com.sport.handler.StepService" android:process=":remote"/>
+        <service android:name="com.sport.handler.StepService"/>
     </application>
 
 

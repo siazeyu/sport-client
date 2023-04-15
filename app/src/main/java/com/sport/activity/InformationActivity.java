@@ -10,9 +10,9 @@ import com.sport.util.database.SPUtil;
 
 public class InformationActivity extends AppCompatActivity {
 
-    private TextInputEditText height;
+    private EditText height;
 
-    private TextInputEditText weight;
+    private EditText weight;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
