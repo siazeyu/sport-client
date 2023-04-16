@@ -12,15 +12,17 @@ import com.amap.api.location.*;
 import com.sport.util.database.DBOpenHelper;
 import com.sport.util.database.DBTable;
 import com.sport.util.database.entity.Point;
+import com.sport.util.database.entity.Record;
 
 public class SportService extends Service {
 
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = null;
-    private DBTable dbTable = DBTable.asDBTable(Point.class);
+    private DBTable point_table = DBTable.asDBTable(Point.class);
+
     private Handler handler = null;
     private Long group;
-    private DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
+    private DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", point_table, 1);
 
     private static boolean flag = true;
 

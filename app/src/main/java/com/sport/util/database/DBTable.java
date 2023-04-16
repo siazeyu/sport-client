@@ -46,13 +46,13 @@ public class DBTable {
         }
         stringStringLinkedHashMap.put("id","integer primary key autoincrement");
         for(Field field: fields){
-            if(field.getName().equalsIgnoreCase("id") && field.getType() == int.class || field.getType() == Integer.class){
+            if(field.getName().equalsIgnoreCase("id") && (field.getType() == int.class || field.getType() == Integer.class)){
                 //找到了
                 continue;
             }
             if(field.getType() == float.class || field.getType() == double.class || field.getType() == Float.class || field.getType() == Double.class){
                 stringStringLinkedHashMap.put(field.getName().toLowerCase(), "double");
-            }else if(field.getType() == Long.class || field.getType() == long.class){
+            }else if(field.getType() == Long.class || field.getType() == long.class || field.getType() == int.class || field.getType() == Integer.class){
                 stringStringLinkedHashMap.put(field.getName().toLowerCase(), "integer");
             }
             else {

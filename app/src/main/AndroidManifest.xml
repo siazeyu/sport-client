@@ -25,6 +25,8 @@
         <activity android:name=".activity.HistoryActivity"/>
         <activity android:name=".activity.InformationActivity"/>
         <activity android:name=".activity.DailyHistoryActivity"/>
+        <activity android:name=".activity.HistoryInfoActivity"/>
+        <activity android:name=".activity.UserInfoActivity"/>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="4f347b88a468caa7c29e0813052cfcf8">
         </meta-data>
         <service android:name="com.amap.api.location.APSService"></service>

@@ -1,37 +1,39 @@
 package com.sport.activity;
 
 import android.Manifest;
+import android.app.Service;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.*;
+import com.amap.api.maps2d.model.LatLng;
+import com.amap.api.maps2d.model.MyLocationStyle;
+import com.amap.api.maps2d.model.PolylineOptions;
 import com.autonavi.amap.mapcore2d.Inner_3dMap_location;
 import com.sport.R;
-import com.sport.handler.SportService;
+import com.sport.handler.StepFunction;
+import com.sport.handler.StepService;
+import com.sport.handler.binder.StepBinder;
 import com.sport.util.database.DBOpenHelper;
 import com.sport.util.database.DBTable;
 import com.sport.util.database.SPUtil;
 import com.sport.util.database.entity.Point;
+import com.sport.util.database.entity.Record;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -40,50 +42,25 @@ import java.util.List;
 
 public class SportActivity extends AppCompatActivity {
 
-    private static final int sensorTypeD = Sensor.TYPE_STEP_DETECTOR;
-    private static final int sensorTypeC = Sensor.TYPE_STEP_COUNTER;
-
     private TextView step;
     private TextView km;
     private TextView kll;
-    public int mDetector;
-    private String[] permissions={Manifest.permission.ACTIVITY_RECOGNITION, Manifest.permission. ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION};
-    private SensorManager mSensorManager;
-    SensorEventListener sensorEventListener = new SensorEventListener() {
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            if (event.sensor.getType() == sensorTypeD && !flag) {
-                if (event.values[0] == 1.0) {
-                    mDetector++;
-                    step.setText(mDetector + "步");
-                    float user_height = SPUtil.getFloat(SportActivity.this, "user_height", 0f);
-                    float user_weight = SPUtil.getFloat(SportActivity.this, "user_weight", 0);
-                    float stepLength = user_height / 300 / 1000;
-                    km.setText(String.format("%.4f km", stepLength * mDetector));
-                    kll.setText(String.format("%.4f cal", user_weight *  stepLength * mDetector * 1.036 ));
-                }
-            }
-
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int i) {
-
-        }
-    };
-
+    private ServiceConnection serviceConnection;
+    private ImageView exit;
+    private StepBinder stepBinder;
+    private int currentStep;
+    private AlertDialog builder;
     MapView mMapView = null;
     AMap aMap;
     private boolean flag = true;
     LinkedList<Point> all ;
-    PolylineOptions options = new PolylineOptions();
+    PolylineOptions options;
 
     private Long group;
-
-    public AMapLocationClient mLocationClient = null;//声明AMapLocationClient类对象
-    public AMapLocationClientOption mLocationOption = null;
-    private DBTable dbTable = DBTable.asDBTable(Point.class);
-    private DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
+    private DBTable dbTable;
+    private DBTable record_table;
+    private DBOpenHelper record;
+    private DBOpenHelper sport;
     private Button start;
 
     @Override
@@ -94,12 +71,14 @@ public class SportActivity extends AppCompatActivity {
         group = System.currentTimeMillis();
 
         initView();
+        initDialog();
+
+        bindService(new Intent(this, StepService.class) ,serviceConnection, Service.BIND_AUTO_CREATE);
+
 
         AMapLocationClient.updatePrivacyAgree(this, true);
         AMapLocationClient.updatePrivacyShow(this, true, true);
-
-
-
+        options = new PolylineOptions();
         mMapView = findViewById(R.id.gaode_map);
         mMapView.onCreate(savedInstanceState);
 
@@ -159,30 +138,26 @@ public class SportActivity extends AppCompatActivity {
         aMap.moveCamera(CameraUpdateFactory.zoomTo(100));
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
 
-
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-// 获取我们需要的传感器类型
-        Sensor stepCounter = mSensorManager.getDefaultSensor(sensorTypeC);
-        Sensor stepDetector = mSensorManager.getDefaultSensor(sensorTypeD);
-// 注册监听器
-        mSensorManager.registerListener(sensorEventListener, stepCounter, SensorManager.SENSOR_DELAY_FASTEST);
-        mSensorManager.registerListener(sensorEventListener, stepDetector, SensorManager.SENSOR_DELAY_FASTEST);
-
     }
 
 
 
     private void initView() {
+        record_table = DBTable.asDBTable(Record.class);
+        dbTable = DBTable.asDBTable(Point.class);
+        record = DBOpenHelper.createDBHelper(this, "record", record_table, 1);
+        sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
+        float user_height = SPUtil.getFloat(SportActivity.this, "user_height", 0f);
+        float user_weight = SPUtil.getFloat(SportActivity.this, "user_weight", 0f);
+
         start = findViewById(R.id.start_btn);
         start.setOnClickListener(v ->{
             if (flag){
                 start.setText("停止");
-//                startService(new Intent(this, SportService.class));
                 flag = false;
             }else {
                 start.setText("开始");
-                mDetector = 0;
-//                stopService(new Intent(this, SportService.class));
+                builder.show();
                 flag = true;
             }
         });
@@ -190,7 +165,44 @@ public class SportActivity extends AppCompatActivity {
         step = findViewById(R.id.step_text);
         km = findViewById(R.id.km_text);
         kll = findViewById(R.id.kll_text);
+        serviceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                stepBinder = (StepBinder) iBinder;
+                StepFunction stepFunction = new StepFunction(SportActivity.this){
 
+                    @Override
+                    public void onCharge(int step) {
+                        SportActivity.this.currentStep++;
+                        runOnUiThread(() -> {
+                           if (!flag){
+                               loadStep(currentStep, user_height, user_weight);
+                           }
+                        });
+                    }
+                };
+
+                stepBinder.getStepService().addStepHandle(stepFunction);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                stepBinder = null;
+            }
+        };
+
+        exit = findViewById(R.id.imageView4);
+        exit.setOnClickListener(view -> {
+            builder.show();
+        });
+
+    }
+
+    private void loadStep(int step, float user_height, float user_weight) {
+        float stepLength = user_height / 300 / 1000;
+        this.step.setText(step + "步");
+        km.setText(String.format("%.4f km", stepLength * step));
+        kll.setText(String.format("%.4f cal", user_weight *  stepLength * step * 1.036 ));
     }
 
     // 加载轨迹
@@ -213,18 +225,11 @@ public class SportActivity extends AppCompatActivity {
     }
 
 
-    private void test() {
-        DBTable dbTable = DBTable.asDBTable(Point.class);
-        DBOpenHelper sport = DBOpenHelper.createDBHelper(this, "sport", dbTable, 1);
-        LinkedList<Point> all = sport.getAll(Point.class);
-        Point point = sport.get(1, Point.class);
-
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
+        unbindService(serviceConnection);
         mMapView.onDestroy();
     }
 
@@ -247,6 +252,33 @@ public class SportActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
         mMapView.onSaveInstanceState(outState);
+    }
+
+    private void initDialog() {
+        builder = new AlertDialog.Builder(this)
+                .setTitle("提示").setMessage("确定保存记录退出吗？(低于50步将不会被记录)")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    saveRecord();
+                    SportActivity.this.finish();
+                    dialog.dismiss();
+                })
+                .setNegativeButton("取消", (dialog, which) -> dialog.dismiss()).create();
+    }
+
+    @Override
+    public void onBackPressed() {
+        builder.show();
+    }
+
+    private void saveRecord(){
+        if (currentStep > 50){
+            float user_height = SPUtil.getFloat(SportActivity.this, "user_height", 0f);
+            float user_weight = SPUtil.getFloat(SportActivity.this, "user_weight", 0f);
+            double stepLength = user_height / 300 / 1000;
+            Record record1 = new Record(currentStep, user_weight *  stepLength * currentStep * 1.036, stepLength * currentStep,group ,System.currentTimeMillis());
+            record.add(record1);
+        }
+
     }
 
 

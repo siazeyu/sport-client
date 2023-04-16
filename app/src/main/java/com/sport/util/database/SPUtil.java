@@ -99,4 +99,11 @@ public class SPUtil {
         return sharedPreferences.getInt(STEP + DateUtils.getDate(), 0);
     }
 
+
+    public static void remove(Context context, String key){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(FILENAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.remove(key);
+        edit.commit();
+    }
 }

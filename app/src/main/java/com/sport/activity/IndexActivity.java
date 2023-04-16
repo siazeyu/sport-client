@@ -6,7 +6,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -18,17 +17,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import com.alibaba.fastjson2.JSON;
 import com.sport.R;
 import com.sport.handler.StepFunction;
 import com.sport.handler.StepService;
 import com.sport.handler.binder.StepBinder;
+import com.sport.util.database.DBOpenHelper;
+import com.sport.util.database.DBTable;
 import com.sport.util.database.SPUtil;
+import com.sport.util.database.entity.Point;
+import com.sport.util.database.entity.Record;
+
+import java.util.LinkedList;
 
 public class IndexActivity extends AppCompatActivity{
 
 
     private String[] permissions={Manifest.permission.ACTIVITY_RECOGNITION, Manifest.permission. ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION};
-    private SensorManager mSensorManager;
     private TextView tv;
     private TextView km;
     private TextView kll;
@@ -42,10 +47,11 @@ public class IndexActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sport);
-        startService(new Intent(this, StepService.class));
+//        startService(new Intent(this, StepService.class));
         shouquan();
         initData();
         bindStepService();
+        test();
         Log.d("TAG" , "onCreate: " + SPUtil.getString(this, "username" , "null"));
     }
 
@@ -53,14 +59,11 @@ public class IndexActivity extends AppCompatActivity{
 
         bindService(new Intent(this, StepService.class) ,serviceConnection, Service.BIND_AUTO_CREATE);
 
-
-
     }
 
     private void initData() {
         float user_height = SPUtil.getFloat(IndexActivity.this, "user_height", 0f);
         float user_weight = SPUtil.getFloat(IndexActivity.this, "user_weight", 0);
-        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         tv = findViewById(R.id.user_step);
         km = findViewById(R.id.textView6);
         kll = findViewById(R.id.textView7);
@@ -129,4 +132,13 @@ public class IndexActivity extends AppCompatActivity{
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    protected void onDestroy() {
+        unbindService(serviceConnection);
+        super.onDestroy();
+    }
+
+    private void test(){
+
+    }
 }

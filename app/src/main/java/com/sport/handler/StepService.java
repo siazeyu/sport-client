@@ -70,11 +70,11 @@ public class StepService extends Service {
                     Iterator<StepFunction> iterator = functions.iterator();
                     while (iterator.hasNext()){
                         StepFunction next = iterator.next();
-//                        if (next.isActivityValid()){
-//                            StepFunction.getFunctions().remove(next);
-//                        }else {
+                        if (next.isActivityValid()){
+                            functions.remove(next);
+                        }else {
                             next.onCharge(mDetector);
-//                        }
+                        }
                     }
                 }
             }

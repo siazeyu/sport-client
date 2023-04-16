@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <EditText
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="@dimen/dp_40"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword12"
+            app:layout_constraintStart_toEndOf="@+id/textView23" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/dp_50" app:layout_constraintBottom_toTopOf="@+id/button20"
+            android:layout_marginEnd="@dimen/dp_60"/>
+    <EditText
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="@dimen/dp_40"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextTextPassword12"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword14"
+            app:layout_constraintStart_toEndOf="@+id/textView26" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/dp_40" app:layout_constraintBottom_toTopOf="@+id/editText"
+            android:layout_marginEnd="@dimen/dp_60"/>
+    <TextView
+            android:text="手机号"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_40" android:id="@+id/textView23"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView26" app:layout_constraintEnd_toStartOf="@+id/editText"
+            android:layout_marginBottom="66dp" app:layout_constraintBottom_toTopOf="@+id/button20"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" android:layout_marginEnd="23dp"/>
+    <TextView
+            android:text="密码"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_40" android:id="@+id/textView24"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView25"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword14" android:layout_marginBottom="42dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView26" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" android:layout_marginEnd="23dp"
+    />
+    <TextView
+            android:text="用户名"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_40" android:id="@+id/textView25"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginTop="@dimen/dp_120"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword13" android:layout_marginBottom="33dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView24" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" android:layout_marginEnd="23dp"/>
+    <TextView
+            android:text="确认密码"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_40" android:id="@+id/textView26"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView24"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword12" android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView23" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" android:layout_marginEnd="23dp"
+    />
+    <EditText
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="@dimen/dp_40"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextTextPassword13"
+            android:layout_marginTop="@dimen/dp_110"
+            app:layout_constraintStart_toEndOf="@+id/textView25" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="33dp" app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword14"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="76dp"
+    />
+    <EditText
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="@dimen/dp_40"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextTextPassword14"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword13"
+            app:layout_constraintStart_toEndOf="@+id/textView24" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="34dp" app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword12"
+            android:layout_marginEnd="76dp"/>
+    <Button
+            android:text="修改"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_40" android:id="@+id/button20"
+            app:strokeColor="#2196F3"
+            app:layout_constraintTop_toBottomOf="@+id/editText" android:layout_marginBottom="232dp"
+            app:layout_constraintEnd_toEndOf="@+id/editText" app:layout_constraintStart_toStartOf="@+id/textView23"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="43dp" android:layout_marginEnd="43dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
