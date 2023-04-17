@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 public class StepService extends Service {
 
     private static final int sensorTypeD = Sensor.TYPE_STEP_DETECTOR;
-    private static final int sensorTypeC = Sensor.TYPE_STEP_COUNTER;
 
     private SensorManager mSensorManager;
     private static int mDetector;
@@ -31,7 +30,6 @@ public class StepService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("TAG", "onBind: ---------------");
         if (!flag) {
             functions = Collections.synchronizedList(new ArrayList<>());
             mDetector = SPUtil.getStep(this);
@@ -39,10 +37,8 @@ public class StepService extends Service {
             mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
             mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 // 获取我们需要的传感器类型
-            Sensor stepCounter = mSensorManager.getDefaultSensor(sensorTypeC);
             Sensor stepDetector = mSensorManager.getDefaultSensor(sensorTypeD);
 // 注册监听器
-            mSensorManager.registerListener(sensorEventListener, stepCounter, SensorManager.SENSOR_DELAY_FASTEST);
             mSensorManager.registerListener(sensorEventListener, stepDetector, SensorManager.SENSOR_DELAY_FASTEST);
             startDBTask();
 
@@ -106,8 +102,4 @@ public class StepService extends Service {
         functions.add(stepFunction);
     }
 
-
-    public static int getStep() {
-        return mDetector;
-    }
 }
