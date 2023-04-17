@@ -1,37 +1,22 @@
 package com.sport.activity;
 
-import android.app.Service;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.graphics.Color;
-import android.location.Location;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.CameraUpdate;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLng;
-import com.amap.api.maps2d.model.MyLocationStyle;
 import com.amap.api.maps2d.model.PolylineOptions;
-import com.autonavi.amap.mapcore2d.Inner_3dMap_location;
 import com.sport.R;
-import com.sport.handler.StepFunction;
-import com.sport.handler.StepService;
-import com.sport.handler.binder.StepBinder;
 import com.sport.util.database.DBOpenHelper;
 import com.sport.util.database.DBTable;
-import com.sport.util.database.SPUtil;
 import com.sport.util.database.entity.Point;
 import com.sport.util.database.entity.Record;
 

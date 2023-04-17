@@ -7,8 +7,8 @@
 
     <EditText
             android:layout_width="@dimen/dp_180"
-            android:layout_height="@dimen/dp_40"
-            android:inputType="textPassword"
+            android:layout_height="@dimen/dp_80"
+            android:inputType="text"
             android:ems="10"
             android:id="@+id/editText"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword12"
@@ -17,7 +17,7 @@
             android:layout_marginEnd="@dimen/dp_60"/>
     <EditText
             android:layout_width="@dimen/dp_180"
-            android:layout_height="@dimen/dp_40"
+            android:layout_height="@dimen/dp_80"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/editTextTextPassword12"
@@ -28,7 +28,7 @@
     <TextView
             android:text="手机号"
             android:layout_width="@dimen/dp_80"
-            android:layout_height="@dimen/dp_40" android:id="@+id/textView23"
+            android:layout_height="@dimen/dp_80" android:id="@+id/textView23"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/textView26" app:layout_constraintEnd_toStartOf="@+id/editText"
             android:layout_marginBottom="66dp" app:layout_constraintBottom_toTopOf="@+id/button20"
@@ -37,7 +37,7 @@
     <TextView
             android:text="密码"
             android:layout_width="@dimen/dp_80"
-            android:layout_height="@dimen/dp_40" android:id="@+id/textView24"
+            android:layout_height="@dimen/dp_80" android:id="@+id/textView24"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/textView25"
             app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword14" android:layout_marginBottom="42dp"
@@ -47,7 +47,7 @@
     <TextView
             android:text="用户名"
             android:layout_width="@dimen/dp_80"
-            android:layout_height="@dimen/dp_40" android:id="@+id/textView25"
+            android:layout_height="@dimen/dp_80" android:id="@+id/textView25"
             android:textSize="@dimen/sp_20"
             android:layout_marginTop="@dimen/dp_120"
             app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword13" android:layout_marginBottom="33dp"
@@ -57,7 +57,7 @@
     <TextView
             android:text="确认密码"
             android:layout_width="@dimen/dp_80"
-            android:layout_height="@dimen/dp_40" android:id="@+id/textView26"
+            android:layout_height="@dimen/dp_80" android:id="@+id/textView26"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/textView24"
             app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword12" android:layout_marginBottom="28dp"
@@ -66,8 +66,8 @@
     />
     <EditText
             android:layout_width="@dimen/dp_180"
-            android:layout_height="@dimen/dp_40"
-            android:inputType="textPassword"
+            android:layout_height="@dimen/dp_80"
+            android:inputType="text"
             android:ems="10"
             android:id="@+id/editTextTextPassword13"
             android:layout_marginTop="@dimen/dp_110"

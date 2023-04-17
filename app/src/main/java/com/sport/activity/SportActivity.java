@@ -1,17 +1,14 @@
 package com.sport.activity;
 
-import android.Manifest;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -35,9 +32,7 @@ import com.sport.util.database.SPUtil;
 import com.sport.util.database.entity.Point;
 import com.sport.util.database.entity.Record;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 
 public class SportActivity extends AppCompatActivity {
@@ -205,19 +200,6 @@ public class SportActivity extends AppCompatActivity {
         kll.setText(String.format("%.4f cal", user_weight *  stepLength * step * 1.036 ));
     }
 
-    // 加载轨迹
-    private void guiji() {
-        all = sport.getNowDay(Point.class);
-        List<LatLng> latLngs = new ArrayList<>();
-        for (Point point : all) {
-//            if (point.getId() < 108){
-                latLngs.add(new LatLng(point.getLatitude(), point.getLongitude()));
-//            }
-        }
-        aMap.addPolyline(options.
-                addAll(latLngs).width(10).color(Color.BLUE)).setDottedLine(false);
-
-    }
     private void guiji(Point point) {
 
         options.add(new LatLng(point.getLatitude(), point.getLongitude()));
